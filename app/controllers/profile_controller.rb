@@ -22,7 +22,7 @@ class ProfileController < ApplicationController
       flash[:notice] = t('profile.password_changed')
     else
       @user.errors.messages.each do |type, msg|
-        flash[type] = msg[0]  
+        flash[type] = msg[0]
       end
     end
     respond_to(&:js)
