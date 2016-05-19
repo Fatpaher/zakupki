@@ -32,3 +32,5 @@
     </div>
 <% end %>
   </div>
+
+<%= render partial: "comments/template", locals: {commentable: @group, new_comment: @comment} %>  

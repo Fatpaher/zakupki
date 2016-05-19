@@ -16,7 +16,8 @@ gem 'paperclip'
 gem 'faker'
 gem 'will_paginate'
 gem 'will_paginate-materialize'
-gem 'factory_girl_rails'
+gem 'acts_as_commentable_with_threading'
+
 
 group :development, :test do
   #DB
