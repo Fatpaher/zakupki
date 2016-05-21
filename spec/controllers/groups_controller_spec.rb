@@ -49,4 +49,25 @@ RSpec.describe GroupsController, type: :controller do
       end
     end
   end
+
+  describe 'GET#show' do
+      it 'renders show template' do
+        group = create :group
+
+        get :show, id: group
+
+        expect(response).to render_template(:show)
+      end
+    end
+
+  describe 'DELETE#destroy' do
+      it 'redirects to login' do
+        group = create :group
+
+        delete :destroy, id: group
+
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+      
 end

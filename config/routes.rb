@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   
   devise_for :users, :controllers => { :omniauth_callbacks => "oauths" }
 
-  resources :users, :purchases, :comments
+  resources :users, :purchases
+  resources :comments, :only => [:create, :destroy]
+  resources :purchases, shallow: true  do
+    resources :comments, :only => [:create, :destroy]
+  end
   resources :groups do
     get :autocomplete_city_name, on: :collection, as: :cities
   end
