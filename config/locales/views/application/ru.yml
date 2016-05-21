@@ -7,6 +7,6 @@ ru:
     about: 'Как это работает'
     log_in: 'Вход / Регистрация'
     log_out: 'Выход'
-    profile: 'Профиль'
+    profile: 'Личный кабинет'
     orders: 'Заказы'
     login_oauth: 'Вход через'
