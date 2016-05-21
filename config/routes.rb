@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   get 'profile/edit', as: :user_profile_edit
   post 'profile/update'
   post 'profile/update_password'
-  get 'pcabinet' => 'profile#pcabinet'
-
+  
   devise_for :users, :controllers => { :omniauth_callbacks => "oauths" }
 
   resources :users, :purchases, :comments

@@ -17,11 +17,17 @@
           </a>
           <ul id="user-menu" class="dropdown-content">
             <li>
-              <%= link_to pcabinet_path do %>
+              <%= link_to user_profile_path do %>
                 <i class="material-icons left">perm_identity</i>
                 <%= t('nav.profile') %>
               <% end %>
             </li>
+            <li>   
+               <%= link_to '#' do %>   
+                <i class="material-icons left">shopping_basket</i>    
+                 <%= t('nav.orders') %>    
+               <% end %>   
+             </li>
             <li class="divider"></li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
