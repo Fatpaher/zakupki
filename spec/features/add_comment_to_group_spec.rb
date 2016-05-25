@@ -1,30 +1,29 @@
 require 'rails_helper'
 
 describe 'User visit group show page' do
-  it 'user see comments'
+  let(:group) { create :group, :enabled }
+
   context 'unregistered' do
-    it "can't leave comments" do
-      group = create :group
+    it "can't leave comment" do
       visit group_path(group)
-      fill_in 'comment[body]', with: 'Comment1'
-      click_on 'Прокомментировать'
-      login_as @user
+      expect(page).not_to have_content 'Прокомментировать'
     end
   end
 
   context 'sign-in' do
+    let(:user) { create :user }
+
     before do
-      @user = create :user
-      login_as @user
+      login_as user
     end
 
-    it 'can leave comments' do
-      group = create :group
+    it 'can leave comment' do
+      comment_body = 'Some comment'
       visit group_path(group)
-      fill_in 'comment[body]', with: 'Comment1'
+      fill_in 'comment[body]', with: comment_body
       click_on 'Прокомментировать'
-      visit group_path(group)
-      expect(page).to have_content('Comment1')
+
+      expect(page).to have_content comment_body
     end
   end
 end

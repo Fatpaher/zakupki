@@ -11,7 +11,7 @@ class Purchase < ActiveRecord::Base
                             url: "/system/:hash.:extension",
                             hash_secret: "very_secret_hash_here",
                             default_url: "/images/:style/missing.png"
-  acts_as_commentable                          
+  acts_as_commentable
 
   validates_attachment_file_name :image, :matches => [/png\Z/, /jpe?g\Z/]
   validates_attachment :image, content_type: { content_type: ["image/jpeg", "image/jpg", "image/png"] },
