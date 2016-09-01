@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.configure do |config|
-  Capybara.javascript_driver = :webkit
+  Capybara.javascript_driver = :webkit_debug
   Capybara.default_max_wait_time = 10
   Capybara.ignore_hidden_elements = false
   config.use_transactional_fixtures = false
