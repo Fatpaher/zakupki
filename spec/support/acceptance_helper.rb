@@ -5,17 +5,19 @@ module AcceptanceHelper
 
   def fill_in_ckeditor(locator, opts)
     content = opts.fetch(:with).to_json
-    page.execute_script <<-SCRIPT
+    script = <<-SCRIPT
       CKEDITOR.instances['#{locator}'].setData('#{content}');
       $('textarea##{locator}').text('#{content}');
     SCRIPT
+    page.evaluate_script(script)
   end
 
   def pick_date_fill_in(date)
-    page.execute_script <<-SCRIPT
+    script = <<-SCRIPT
       $('#purchase_end_date').
         pickadate('picker').
         set('select', '#{date}')
     SCRIPT
+    page.evaluate_script(script)
   end
 end
