@@ -31,6 +31,12 @@ class Purchase < ActiveRecord::Base
 
   after_initialize :init
 
+  before_save :flat_shipping_price_check
+
+  def flat_shipping_price_check
+    self.flat_shipping_price = 0 if self.delivery_payment_type.value != 'фиксированная стоимость'
+  end
+
   def init
     self.commission  ||= 0.0
   end
@@ -70,6 +76,7 @@ end
 #  apartment                     :string
 #  delivery_payment_type_id      :integer
 #  delivery_payment_cost_type_id :integer
+#  flat_shipping_price           :float            default(0.0)
 #
 # Indexes
 #
